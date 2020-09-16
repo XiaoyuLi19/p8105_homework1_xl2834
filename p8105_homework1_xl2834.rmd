@@ -4,3 +4,69 @@ author: "Xiaoyu Li"
 date: "9/15/2020"
 output: github_document
 ---
+
+
+```{r}
+library(tidyverse)
+```
+
+## Problem 1
+
+Create a data frame with the specified elements.
+```{r}
+prob1_df = 
+  tibble(
+    samp = rnorm(10),
+    vec_logical = samp > 0,
+    vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j" ),
+    vec_factor = factor(c("low", "mod", "low", "mod", "high", "low",                           "mod", "high", "high", "low"))
+)
+```
+
+
+Take the mean of the variables in the data frame.
+```{r}
+mean(pull(prob1_df, samp))
+mean(pull(prob1_df, vec_logical))
+mean(pull(prob1_df, vec_char))
+mean(pull(prob1_df, vec_factor))
+```
+
+I can take the mean of numeric sample and logical vector, but not the character and factor.
+
+Convert the logical vector to other types.
+```{r, results='hide', warning=FALSE}
+as.numeric(pull(prob1_df,vec_logical)) * pull(prob1_df, samp)
+as.factor(pull(prob1_df,vec_logical)) * pull(prob1_df, samp)
+as.numeric(as.factor(pull(prob1_df,vec_logical))) * pull(prob1_df, samp)
+```
+
+I can multiply the numeric sample with the logical vector after it was converted to numeric or converted to factor and then numeric, but not after it was converted to a factor. 
+
+This can help to explain why I cannot take the mean of a factor (because the operators like "+" and "*" are not meaningful for factors).
+
+
+## Problem 2
+
+Download the package containing the penguins dataset.
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+This dataset include variables `r ls(penguins)`.
+The size of the dataset is `r nrow(penguins)` * `r ncol(penguins)`.
+The mean flipper length is `r mean(penguins,flipper_length_mm)`.
+
+#### Plot
+
+Make a scatterplot.
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+```
+
+Save the plot.
+```{r}
+ggsave("scatterplot.pdf")
+```
+
