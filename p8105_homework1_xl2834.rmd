@@ -1,0 +1,6 @@
+---
+title: "p8105_homework1_xl2834"
+author: "Xiaoyu Li"
+date: "9/15/2020"
+output: github_document
+---
