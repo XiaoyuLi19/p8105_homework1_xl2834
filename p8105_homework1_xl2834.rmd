@@ -53,9 +53,10 @@ Download the package containing the penguins dataset.
 data("penguins", package = "palmerpenguins")
 ```
 
-This dataset include variables `r ls(penguins)`.
+This dataset include variables `r ls(penguins)`. 
+The species of penguins include `r unique (penguins$species)`. The islands include `r unique (penguins$island)`. The maximum value of bill length is `r max(penguins$bill_length_mm,na.rm = TRUE)`, and the minimum value is `r min(penguins$bill_length_mm,na.rm = TRUE)`.
 The size of the dataset is `r nrow(penguins)` * `r ncol(penguins)`.
-The mean flipper length is `r mean(penguins,flipper_length_mm)`.
+The mean flipper length is `r mean(penguins$flipper_length_mm,na.rm = TRUE)`.
 
 #### Plot
 

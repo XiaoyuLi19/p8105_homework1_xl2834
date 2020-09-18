@@ -38,7 +38,7 @@ Take the mean of the variables in the data frame.
 mean(pull(prob1_df, samp))
 ```
 
-    ## [1] 0.2278455
+    ## [1] 0.2565152
 
 ``` r
 mean(pull(prob1_df, vec_logical))
@@ -91,8 +91,11 @@ data("penguins", package = "palmerpenguins")
 ```
 
 This dataset include variables bill\_depth\_mm, bill\_length\_mm,
-body\_mass\_g, flipper\_length\_mm, island, sex, species, year. The size
-of the dataset is 344 \* 8. The mean flipper length is NA.
+body\_mass\_g, flipper\_length\_mm, island, sex, species, year. The
+species of penguins include Adelie, Gentoo, Chinstrap. The islands
+include Torgersen, Biscoe, Dream. The maximum value of bill length is
+59.6, and the minimum value is 32.1. The size of the dataset is 344 \*
+8. The mean flipper length is 200.9152047.
 
 #### Plot
 
